@@ -1,0 +1,791 @@
+/* ============================================
+   IITM LEARNING HUB - JAVASCRIPT
+   ============================================ */
+
+// ============================================
+// RESOURCES DATA
+// ============================================
+
+const resourcesData = [
+    // Deep Learning Resources
+    {
+        id: 1,
+        title: "CS6910 – Fundamentals of Deep Learning",
+        description: "IIT Madras official course by Prof. Mitesh Khapra",
+        url: "https://www.cse.iitm.ac.in/~miteshk/CS6910.html",
+        category: "course",
+        icon: "fas fa-graduation-cap",
+        tags: ["deep-learning", "iitm", "official"]
+    },
+    {
+        id: 2,
+        title: "Deep Learning Book",
+        description: "Goodfellow, Bengio, Courville (MIT Press)",
+        url: "https://www.deeplearningbook.org/",
+        category: "book",
+        icon: "fas fa-book",
+        tags: ["deep-learning", "book", "theory"]
+    },
+    {
+        id: 3,
+        title: "Dive into Deep Learning",
+        description: "Interactive online book (Free)",
+        url: "https://d2l.ai/",
+        category: "book",
+        icon: "fas fa-laptop",
+        tags: ["deep-learning", "interactive", "free"]
+    },
+    {
+        id: 4,
+        title: "CS6910 Assignment Solutions",
+        description: "NN from scratch, CNN, RNN implementations",
+        url: "https://github.com/muk465/CS6910-Fundamentals-of-Deeplearning",
+        category: "github",
+        icon: "fab fa-github",
+        tags: ["assignments", "python", "deep-learning"]
+    },
+    {
+        id: 5,
+        title: "ML-DL-LLM Animations",
+        description: "Visual animations for AdaGrad, Adam, Momentum",
+        url: "https://github.com/Arunprakash-A/ML-DL-LLM-Animations",
+        category: "github",
+        icon: "fab fa-github",
+        tags: ["visualization", "educational"]
+    },
+    {
+        id: 6,
+        title: "Complete Machine Learning Notes",
+        description: "Handwritten notes – ANN, Backprop, CNNs, RNNs",
+        url: "https://github.com/BenGJ10/Complete-Machine-Learning-Notes",
+        category: "github",
+        icon: "fab fa-github",
+        tags: ["notes", "reference"]
+    },
+    {
+        id: 7,
+        title: "CS6910 YouTube Playlist",
+        description: "Complete video lectures Weeks 1-12",
+        url: "https://www.youtube.com/@saranda_iitm",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["lectures", "video", "deep-learning"]
+    },
+    {
+        id: 8,
+        title: "NPTEL Deep Learning Part 2",
+        description: "Bayesian, RBMs, VAEs, GANs",
+        url: "https://nptel.ac.in/",
+        category: "course",
+        icon: "fas fa-play-circle",
+        tags: ["nptel", "advanced", "deep-learning"]
+    },
+    
+    // Quantum Computing Resources
+    {
+        id: 9,
+        title: "IBM Quantum",
+        description: "Free access to quantum simulators",
+        url: "https://quantum-computing.ibm.com/",
+        category: "tool",
+        icon: "fas fa-atom",
+        tags: ["quantum", "simulator", "ibm"]
+    },
+    {
+        id: 10,
+        title: "Qiskit",
+        description: "IBM's Python library for quantum programming",
+        url: "https://qiskit.org/",
+        category: "tool",
+        icon: "fas fa-code",
+        tags: ["quantum", "python", "programming"]
+    },
+    {
+        id: 11,
+        title: "Google Cirq",
+        description: "Google's open-source quantum framework",
+        url: "https://quantumai.google/cirq",
+        category: "tool",
+        icon: "fas fa-atom",
+        tags: ["quantum", "google", "framework"]
+    },
+    {
+        id: 12,
+        title: "IBM Quantum Composer",
+        description: "Visual drag-and-drop quantum circuit builder",
+        url: "https://quantum-computing.ibm.com/composer",
+        category: "tool",
+        icon: "fas fa-project-diagram",
+        tags: ["quantum", "visual", "circuits"]
+    },
+    {
+        id: 13,
+        title: "Mastering Qiskit v2.0",
+        description: "Free hands-on course",
+        url: "https://learn.qiskit.org/course",
+        category: "course",
+        icon: "fas fa-graduation-cap",
+        tags: ["quantum", "qiskit", "course"]
+    },
+    {
+        id: 14,
+        title: "Understanding Quantum Information",
+        description: "Free video series from Qiskit YouTube",
+        url: "https://www.youtube.com/@qiskit",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["quantum", "video", "education"]
+    },
+    
+    // Workshop Resources
+    {
+        id: 15,
+        title: "Music Recommender System Notebook",
+        description: "Build 3 types of recommendation systems",
+        url: "https://colab.research.google.com/",
+        category: "notebook",
+        icon: "fas fa-music",
+        tags: ["workshop", "recommender", "ml"]
+    },
+    {
+        id: 16,
+        title: "Images as Data Session Notebook",
+        description: "NumPy, PIL, image processing fundamentals",
+        url: "https://drive.google.com/file/d/1K2xzA5bzWwg16w1cJux49_iufX9_zwVk/view",
+        category: "notebook",
+        icon: "fas fa-image",
+        tags: ["workshop", "images", "numpy"]
+    },
+    {
+        id: 17,
+        title: "NumPy Visualization Tool",
+        description: "Interactive tool to understand NumPy operations",
+        url: "https://numpylive.onrender.com/",
+        category: "tool",
+        icon: "fas fa-eye",
+        tags: ["numpy", "visualization", "interactive"]
+    },
+    {
+        id: 18,
+        title: "IITM BS Degree Workshop 2026",
+        description: "Complete workshop playlist",
+        url: "https://www.youtube.com/watch?v=PQMHGPQadcE&list=PLZ2ps__7DhBbORwkqeEsPJp1bogRwfW_Y&index=36",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["workshop", "playlist"]
+    },
+    
+    // Tools & Platforms
+    {
+        id: 19,
+        title: "Google Colab",
+        description: "Free cloud-based Jupyter notebook environment",
+        url: "https://colab.research.google.com/",
+        category: "tool",
+        icon: "fas fa-flask",
+        tags: ["tool", "python", "notebook"]
+    },
+    {
+        id: 20,
+        title: "NumPy Documentation",
+        description: "Official NumPy documentation",
+        url: "https://numpy.org/doc/",
+        category: "tool",
+        icon: "fas fa-calculator",
+        tags: ["numpy", "documentation", "reference"]
+    },
+    {
+        id: 21,
+        title: "Pillow (PIL) Documentation",
+        description: "Python Imaging Library documentation",
+        url: "https://pillow.readthedocs.io/",
+        category: "tool",
+        icon: "fas fa-image",
+        tags: ["pil", "images", "documentation"]
+    },
+    {
+        id: 22,
+        title: "Matplotlib Documentation",
+        description: "Python plotting library documentation",
+        url: "https://matplotlib.org/",
+        category: "tool",
+        icon: "fas fa-chart-bar",
+        tags: ["matplotlib", "visualization", "documentation"]
+    },
+    {
+        id: 23,
+        title: "DeepLearning.AI",
+        description: "Courses and resources from Andrew Ng",
+        url: "https://www.deeplearning.ai/",
+        category: "course",
+        icon: "fas fa-brain",
+        tags: ["deep-learning", "courses", "andrew-ng"]
+    },
+    
+    // YouTube Channels
+    {
+        id: 24,
+        title: "Saranda House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@saranda_iitm",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 25,
+        title: "Nallamala House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@pichavaram_IITMBS/videos",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 26,
+        title: "Sundarbans House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@sundarbansiitm/streams",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 27,
+        title: "Wayanad House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@wayanadhouseiitm/streams",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 28,
+        title: "Namdapha House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@Namdapha_IITM/streams",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 29,
+        title: "Kanha House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@kanhahouse.iitmbs",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 30,
+        title: "Nilgiri House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@nilgirihouseiitm/streams",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    {
+        id: 31,
+        title: "Kaziranga House",
+        description: "IITM House YouTube Channel",
+        url: "https://www.youtube.com/@KazirangaHouse/streams",
+        category: "youtube",
+        icon: "fab fa-youtube",
+        tags: ["youtube", "house", "sessions"]
+    },
+    
+    // Mental Wellness
+    {
+        id: 32,
+        title: "Mental Well-Being Session Notes",
+        description: "Complete summary from Dr. Rini Mathai's session",
+        url: "#wellness",
+        category: "notebook",
+        icon: "fas fa-heart",
+        tags: ["mental-health", "wellness", "self-care"]
+    }
+];
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+const navbar = document.getElementById('navbar');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinks = document.getElementById('navLinks');
+const navLinksItems = document.querySelectorAll('.nav-link');
+
+// Scroll effect
+window.addEventListener('scroll', throttle(() => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+}, 100));
+
+// Mobile menu toggle
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu on link click
+navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// Active link highlighting
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', throttle(() => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinksItems.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}, 100));
+
+// ============================================
+// THEME TOGGLE
+// ============================================
+
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Check for saved theme
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+    if (theme === 'light') {
+        themeIcon.className = 'fas fa-sun';
+    } else {
+        themeIcon.className = 'fas fa-moon';
+    }
+}
+
+// ============================================
+// ANIMATED COUNTERS
+// ============================================
+
+const statNumbers = document.querySelectorAll('.stat-number');
+let countersAnimated = false;
+
+function animateCounters() {
+    if (countersAnimated) return;
+    
+    const heroStats = document.querySelector('.hero-stats');
+    if (!heroStats) return;
+    
+    const rect = heroStats.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        countersAnimated = true;
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-count'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    stat.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    stat.textContent = target + '+';
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+}
+
+window.addEventListener('scroll', throttle(animateCounters, 100));
+animateCounters();
+
+// ============================================
+// RESOURCES RENDERING
+// ============================================
+
+const resourcesList = document.getElementById('resourcesList');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+function renderResources(filter = 'all') {
+    if (!resourcesList) return;
+    
+    const filteredResources = filter === 'all' 
+        ? resourcesData 
+        : resourcesData.filter(r => r.category === filter);
+    
+    resourcesList.innerHTML = filteredResources.map(resource => `
+        <a href="${resource.url}" target="_blank" class="resource-item" data-category="${resource.category}">
+            <div class="resource-item-icon ${resource.category}">
+                <i class="${resource.icon}"></i>
+            </div>
+            <div class="resource-item-content">
+                <h4>${resource.title}</h4>
+                <p>${resource.description}</p>
+            </div>
+            <i class="fas fa-arrow-right resource-item-arrow"></i>
+        </a>
+    `).join('');
+}
+
+// Initialize resources
+renderResources();
+
+// Filter functionality
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderResources(btn.getAttribute('data-filter'));
+    });
+});
+
+// ============================================
+// SEARCH FUNCTIONALITY
+// ============================================
+
+const searchModal = document.getElementById('searchModal');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const closeSearch = document.getElementById('closeSearch');
+const heroSearch = document.querySelector('.hero-search');
+
+// Open search modal
+function openSearch() {
+    searchModal.classList.add('active');
+    setTimeout(() => searchInput.focus(), 100);
+}
+
+// Close search modal
+function closeSearchModal() {
+    searchModal.classList.remove('active');
+    searchInput.value = '';
+    searchResults.innerHTML = '<p class="search-hint">Start typing to search...</p>';
+}
+
+heroSearch.addEventListener('click', openSearch);
+
+closeSearch.addEventListener('click', closeSearchModal);
+
+searchModal.addEventListener('click', (e) => {
+    if (e.target === searchModal) {
+        closeSearchModal();
+    }
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+    }
+    if (e.key === 'Escape') {
+        closeSearchModal();
+    }
+});
+
+// Search functionality
+const performSearch = debounce((query) => {
+    if (query.length < 2) {
+        searchResults.innerHTML = '<p class="search-hint">Start typing to search...</p>';
+        return;
+    }
+    
+    const lowercaseQuery = query.toLowerCase();
+    const matches = resourcesData.filter(resource => 
+        resource.title.toLowerCase().includes(lowercaseQuery) ||
+        resource.description.toLowerCase().includes(lowercaseQuery) ||
+        resource.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+    );
+    
+    if (matches.length === 0) {
+        searchResults.innerHTML = `
+            <p class="search-hint">
+                <i class="fas fa-search" style="display: block; font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                No results found for "${query}"
+            </p>
+        `;
+        return;
+    }
+    
+    searchResults.innerHTML = matches.map(resource => `
+        <a href="${resource.url}" target="_blank" class="search-result-item">
+            <div class="resource-item-icon ${resource.category}" style="width: 32px; height: 32px; font-size: 0.8rem;">
+                <i class="${resource.icon}"></i>
+            </div>
+            <div>
+                <strong style="display: block; font-size: 0.95rem;">${resource.title}</strong>
+                <span style="font-size: 0.8rem; color: var(--text-tertiary);">${resource.description}</span>
+            </div>
+        </a>
+    `).join('');
+}, 200);
+
+searchInput.addEventListener('input', (e) => {
+    performSearch(e.target.value);
+});
+
+// ============================================
+// BACK TO TOP
+// ============================================
+
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', throttle(() => {
+    if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+}, 100));
+
+backToTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// ============================================
+// PROGRESS BAR
+// ============================================
+
+const progressBar = document.getElementById('progressBar');
+
+window.addEventListener('scroll', throttle(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+}, 50));
+
+// ============================================
+// SCROLL REVEAL ANIMATIONS
+// ============================================
+
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll('.quick-card, .workshop-card, .quantum-card, .youtube-card, .wellness-card, .tool-card, .resource-card, .repo-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// ============================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ============================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        e.preventDefault();
+        const target = document.querySelector(href);
+        
+        if (target) {
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// ============================================
+// COPY TO CLIPBOARD
+// ============================================
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
+}
+
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--success);
+        color: white;
+        padding: 12px 24px;
+        border-radius: var(--radius-lg);
+        font-weight: 500;
+        box-shadow: var(--shadow-lg);
+        z-index: 3000;
+        opacity: 0;
+        transition: all 0.3s ease;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    requestAnimationFrame(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
+        setTimeout(() => toast.remove(), 300);
+    }, 2000);
+}
+
+// ============================================
+// LAZY LOADING IMAGES
+// ============================================
+
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// ============================================
+// PERFORMANCE: PREFETCH LINKS ON HOVER
+// ============================================
+
+document.querySelectorAll('a[href^="http"]').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        const prefetch = document.createElement('link');
+        prefetch.rel = 'prefetch';
+        prefetch.href = link.href;
+        document.head.appendChild(prefetch);
+    }, { once: true });
+});
+
+// ============================================
+// CONSOLE BRANDING
+// ============================================
+
+console.log('%c🎓 IITM Learning Hub', 'font-size: 24px; font-weight: bold; color: #6366f1;');
+console.log('%cYour complete learning companion!', 'font-size: 14px; color: #a1a1aa;');
+console.log('%cBuilt with ❤️ for IITM Students', 'font-size: 12px; color: #71717a;');
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('✅ IITM Learning Hub initialized');
+    
+    // Add loaded class for CSS transitions
+    document.body.classList.add('loaded');
+    
+    // Initialize any lazy-loaded content
+    renderResources();
+    
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+        document.documentElement.style.setProperty('--transition-normal', '0.01s');
+        document.documentElement.style.setProperty('--transition-slow', '0.01s');
+    }
+});
+
+// ============================================
+// SERVICE WORKER (Optional - for PWA)
+// ============================================
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        // Uncomment when you have a service worker file
+        // navigator.serviceWorker.register('/sw.js')
+        //     .then(reg => console.log('SW registered'))
+        //     .catch(err => console.log('SW registration failed'));
+    });
+}
